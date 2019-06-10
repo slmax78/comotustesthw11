@@ -11,7 +11,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name= "hw1.WebDriverManagerTest" level="debug" additivity="true">
+        <Logger name="WebDriverManagerTest" level="debug" additivity="true">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>
         </Logger>
