@@ -24,7 +24,7 @@ public class WebDriverManagerTest {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.get("https://otus.ru/");
-        logger.info("info");
+        logger.debug("debug");
         driver.quit();
 
     }
