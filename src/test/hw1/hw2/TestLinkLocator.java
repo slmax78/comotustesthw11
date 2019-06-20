@@ -8,15 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
 
-
 public class TestLinkLocator {
-    private static final Logger logger = LogManager.getLogger(hw1.WebDriverManagerTest.class);
-    private  WebDriver driver;
+    private static final Logger logger = LogManager.getLogger(hw2.TestLinkLocator.class);
+    private WebDriver driver;
 
 
     @Before
@@ -36,7 +36,19 @@ public class TestLinkLocator {
         driver.findElement(By.cssSelector("#tl_password")).sendKeys("1234567890");
         driver.findElement(By.xpath("//*[@id=\"login\"]/div[3]/input")).click();
         logger.debug("info");
-        driver.findElement(By.xpath("//a[@href = 'http://localhost/testlink/general/frmWorkArea.php?feature=editTc']")).click();
+        driver.switchTo().frame("mainframe");
+        driver.findElement(By.xpath("/html/body/div[2]/div[3]/a[1]")).click();
+        driver.switchTo().frame("workframe");
+        driver.findElement(By.xpath("/html/body/div/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"new_testsuite\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"name\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"name\"]")).sendKeys("TestSuiteOne");
+        WebElement iframe = driver.findElement(By.tagName("iframe"));
+        driver.switchTo().frame(iframe);
+        WebElement tinymce = driver.findElement(By.tagName("body"));
+        tinymce.clear();
+        tinymce.sendKeys("Test suite description");
+
         //driver.quit();
 
     }
